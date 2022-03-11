@@ -1,0 +1,43 @@
+<div class="h-14 flex dark:text-gray-200 border-b border-gray-100 dark:border-gray-800">
+  <div class="w-3/4">
+    <input
+      [(ngModel)]="client_search"
+      name="serch_client"
+      (input)="show_client()"
+      type="text"
+      class="block w-full h-full bg-transparent px-8 focus:outline-none text-responsive-sm dark:bg-dark_third"
+      placeholder="Chercher un client..."
+    />
+  </div>
+  <button type="submit" class="block w-1/4 text-center bg-primary text-responsive-sm font-bold text-white hover:opacity-75 transition duration-500 dark:bg-dark_secondary">Confirmer</button>
+</div>
+<div class="px-6 h-full flex flex-col overflow-auto text-gray-600 dark:text-gray-200 relative">
+  <div class="py-1">
+    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Nom</span> :</div>
+    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Produits achetés</span> :</div>
+    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Total depensé</span> :</div>
+    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Remise</span> :</div>
+  </div>
+  <a
+    href=""
+    class="block w-full mx-auto py-2 px-4 bg-primary text-white font-bold text-center rounded-lg bottom-0 text-responsive-sm hover:opacity-75 transition duration-500 active:translate-y-1 dark:bg-dark_secondary"
+  >
+    Voir les clients
+  </a>
+  <div *ngIf="is_client" class="absolute bg-white top-0 left-0 w-full h-fit shadow-lg dark:bg-dark_secondary">
+    <div
+      [ngClass]="{ 'bg-gray-300 dark:bg-gray-700': selected_client[client.id] }"
+      (click)="select_client(client.id)"
+      *ngFor="let client of all_clients; let i = index"
+      class="w-full flex px-10 py-3 border-t border-gray-300 border-dashed cursor-pointer hover:bg-gray-300 dark:border-gray-700 dark:hover:bg-gray-700"
+    >
+      <div class="w-1/12">{{ client.id }}.</div>
+      <div class="w-6/12">
+        {{ client.nom }}
+      </div>
+      <div class="w-5/12">
+        {{ client.num_tel }}
+      </div>
+    </div>
+  </div>
+</div>

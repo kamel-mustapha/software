@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: digital;
+  src: url("assets/digital-7/digital-7.ttf");
+}

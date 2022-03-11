@@ -1,0 +1,3 @@
+pyinstaller manage.py --hidden-import django, --hidden-import cryptocode --onefile --name data --key KamelxGiannis22 --add-data="ressources/;./ressources" --icon=icone.ico --dispath ../electron/ --noconsole
+
+#add --noconsole on prod

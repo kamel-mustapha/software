@@ -1,0 +1,79 @@
+<div class="h-full relative dark:text-gray-200">
+  <div class="py-3 product_grid text-responsive-sm shadow-md bg-primary text-white font-semibold dark:bg-dark_primary">
+    <div></div>
+    <div>Article</div>
+    <div>Prix</div>
+    <div>Quantité</div>
+    <div></div>
+  </div>
+
+  <form autocomplete="off" #f="ngForm" class="h-16 flex shadow-md relative dark:bg-dark_third dark:shadow-xl">
+    <div class="w-3/4">
+      <input
+        autocomplete="off"
+        name="input_search"
+        ngModel
+        (input)="suggestions_show(f)"
+        type="text"
+        class="block w-full h-full bg-transparent px-8 text-responsive-sm focus:outline-none"
+        placeholder="Chercher un produit..."
+      />
+    </div>
+    <button
+      (click)="submit_search(f)"
+      type="submit"
+      class="block w-1/4 text-center bg-secondary text-responsive-sm font-bold text-white hover:opacity-75 transition duration-500 dark:bg-dark_secondary"
+    >
+      Confirmer
+    </button>
+  </form>
+
+  <div class="h-3/4 overflow-auto pt-6 relative">
+    <div class="product_grid py-2 px-6 text-lg border-b border-dashed border-gray-200 text-responsive-sm dark:border-gray-700" *ngFor="let product of sold_products[selected_caisse]; let i = index">
+      <div class="pt-3">{{ i + 1 }}.</div>
+      <div class="font-bold overflow-x-hidden pt-3">
+        {{ product.nom | titlecase }}
+      </div>
+      <div class="pt-3">
+        <span class="bg-secondary text-white rounded-full py-1 px-3 font-bold overflow-x-hidden dark:bg-dark_third">{{ product.prix_vente | number: "1.2-2" }}</span>
+      </div>
+      <div>
+        <input
+          (change)="change_quantite(product.id, $event)"
+          type="number"
+          class="rounded-md border border-gray-300 w-36 py-2 px-4 font-bold overflow-x-hidden focus:outline-none focus:border-cyan-800 dark:border-gray-700 dark:bg-gray-900 dark:focus:border-gray-600"
+          value="{{ product.quantite }}"
+        />
+      </div>
+      <div class="text-center pt-1">
+        <span (click)="delete_product(product.id, f)">
+          <i
+            class="fas fa-trash fa-lg p-1 h-6 w-6 text-red-500 mx-4 cursor-pointer rounded-full hover:bg-red-700 hover:text-white transition duration-500 active:translate-y-1 dark:text-red-900 dark:hover:text-gray-200 dark:hover:bg-red-900"
+          ></i>
+        </span>
+      </div>
+    </div>
+
+    <div *ngIf="show_suggestions" class="bg-white shadow-lg absolute top-0 w-full h-fit z-40 dark:bg-dark_secondary">
+      <div
+        (click)="select_suggestion(product.id)"
+        class="product_grid py-4 px-8 text-lg border-t border-dashed border-gray-200 cursor-pointer hover:bg-gray-200 dark:border-gray-700 text-responsive-sm hover:dark:bg-gray-700"
+        *ngFor="let product of suggestions_products; let i = index"
+        [ngClass]="{ 'bg-gray-200 dark:bg-gray-700': selected_suggestions[product.id] }"
+      >
+        <div>{{ i + 1 }}.</div>
+        <div class="font-bold overflow-x-hidden">
+          {{ product.nom | titlecase }}
+        </div>
+        <div>
+          <span class="bg-fifth rounded-full py-1 px-2 font-bold overflow-x-hidden dark:bg-dark_third">{{ product.prix_vente }}</span>
+          DA
+        </div>
+        <div>
+          <span class="bg-fourth rounded-full py-1 px-2 font-bold overflow-x-hidden dark:bg-cyan-900">ref. {{ product.reference }}</span>
+        </div>
+        <div class="text-center"></div>
+      </div>
+    </div>
+  </div>
+</div>

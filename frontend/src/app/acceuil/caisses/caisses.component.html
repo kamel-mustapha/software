@@ -1,0 +1,12 @@
+<div class="p-2 h-fit flex gap-2">
+  <div
+    *ngFor="let caisse of total_caisses; let i = index"
+    (click)="change_caisse(caisse.name)"
+    [ngClass]="{ 'bg-secondary border-none dark:bg-dark_secondary -translate-y-1': selected_caisse == caisse.name }"
+    class="h-full bg-white w-1/4 py-3 border-2 border-fifth text-center text-primary text-responsive-md font-bold rounded-md cursor-pointer active:translate-y-1 transition duration-500 dark:text-gray-300 dark:border-gray-800 dark:bg-black"
+  >
+    <span [ngClass]="{ 'text-gray-100 ': selected_caisse == caisse.name }" class=""><i class="fas fa-cash-register fa-2xl"></i></span>
+    <br />
+    <span [ngClass]="{ 'text-gray-100 ': selected_caisse == caisse.name }" class="text-responsive-sm">Caisse {{ i + 1 }}</span>
+  </div>
+</div>
