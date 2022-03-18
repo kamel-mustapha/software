@@ -11,19 +11,13 @@
   </div>
   <button type="submit" class="block w-1/4 text-center bg-primary text-responsive-sm font-bold text-white hover:opacity-75 transition duration-500 dark:bg-dark_secondary">Confirmer</button>
 </div>
-<div class="px-6 h-full flex flex-col overflow-auto text-gray-600 dark:text-gray-200 relative">
-  <div class="py-1">
+<div class="px-6 h-full overflow-auto text-gray-600 dark:text-gray-200 relative">
+  <div class="py-1 h-full">
     <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Nom</span> :</div>
     <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Produits achetés</span> :</div>
     <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Total depensé</span> :</div>
     <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Remise</span> :</div>
   </div>
-  <a
-    href=""
-    class="block w-full mx-auto py-2 px-4 bg-primary text-white font-bold text-center rounded-lg bottom-0 text-responsive-sm hover:opacity-75 transition duration-500 active:translate-y-1 dark:bg-dark_secondary"
-  >
-    Voir les clients
-  </a>
   <div *ngIf="is_client" class="absolute bg-white top-0 left-0 w-full h-fit shadow-lg dark:bg-dark_secondary">
     <div
       [ngClass]="{ 'bg-gray-300 dark:bg-gray-700': selected_client[client.id] }"

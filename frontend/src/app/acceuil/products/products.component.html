@@ -8,28 +8,19 @@
   </div>
 
   <form autocomplete="off" #f="ngForm" class="h-16 flex shadow-md relative dark:bg-dark_third dark:shadow-xl">
-    <div class="w-3/4">
-      <input
-        autocomplete="off"
-        name="input_search"
-        ngModel
-        (input)="suggestions_show(f)"
-        type="text"
-        class="block w-full h-full bg-transparent px-8 text-responsive-sm focus:outline-none"
-        placeholder="Chercher un produit..."
-      />
-    </div>
-    <button
-      (click)="submit_search(f)"
-      type="submit"
-      class="block w-1/4 text-center bg-secondary text-responsive-sm font-bold text-white hover:opacity-75 transition duration-500 dark:bg-dark_secondary"
-    >
-      Confirmer
-    </button>
+    <input
+      autocomplete="off"
+      name="input_search"
+      ngModel
+      (input)="suggestions_show(f)"
+      type="text"
+      class="block w-full h-full bg-transparent px-8 text-responsive-sm focus:outline-none"
+      placeholder="Chercher un produit..."
+    />
   </form>
 
-  <div class="h-3/4 overflow-auto pt-6 relative">
-    <div class="product_grid py-2 px-6 text-lg border-b border-dashed border-gray-200 text-responsive-sm dark:border-gray-700" *ngFor="let product of sold_products[selected_caisse]; let i = index">
+  <div class="h-3/4 overflow-auto relative">
+    <div class="product_grid py-2 px-6 text-lg text-responsive-sm dark:border-gray-700" *ngFor="let product of sold_products[selected_caisse]; let i = index" [ngClass] = "{'bg-gray-100': i % 2 != 0}">
       <div class="pt-3">{{ i + 1 }}.</div>
       <div class="font-bold overflow-x-hidden pt-3">
         {{ product.nom | titlecase }}
@@ -56,10 +47,9 @@
 
     <div *ngIf="show_suggestions" class="bg-white shadow-lg absolute top-0 w-full h-fit z-40 dark:bg-dark_secondary">
       <div
-        (click)="select_suggestion(product.id)"
+        (click)="submit_search(product.id, f)"
         class="product_grid py-4 px-8 text-lg border-t border-dashed border-gray-200 cursor-pointer hover:bg-gray-200 dark:border-gray-700 text-responsive-sm hover:dark:bg-gray-700"
         *ngFor="let product of suggestions_products; let i = index"
-        [ngClass]="{ 'bg-gray-200 dark:bg-gray-700': selected_suggestions[product.id] }"
       >
         <div>{{ i + 1 }}.</div>
         <div class="font-bold overflow-x-hidden">

@@ -27,10 +27,11 @@ export class ProductsComponent implements OnInit {
 
   // functions
   add_to_sold_products(product: any) {
-    if (this.sold_products[this.selected_caisse].includes(product)) {
+    let is_product_in_sold = this.sold_products[this.selected_caisse].find((element: any) => element.id == product.id);
+    if (is_product_in_sold) {
       this.sold_products[this.selected_caisse].find((sold_element: any) => sold_element.id == product.id).quantite++;
     } else {
-      this.sold_products[this.selected_caisse].push(product);
+      this.sold_products[this.selected_caisse].push({ ...product });
       this.show_suggestions = false;
     }
     this.show_suggestions = false;
@@ -60,25 +61,21 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  submit_search(form: NgForm): void {
-    let searched_product = this.all_products.find((element: any) => element.id == this.suggestion_selected_id);
+  submit_search(id: number, form: NgForm): void {
+    let searched_product = this.all_products.find((element: any) => element.id == id);
     this.add_to_sold_products(searched_product);
     form.reset();
-  }
-
-  select_suggestion(id: number): void {
-    this.selected_suggestions = {};
-    this.suggestion_selected_id = id;
-    this.selected_suggestions[id] = true;
+    this.shared.set_vente(this.selected_caisse, this.sold_products[this.selected_caisse]);
   }
 
   delete_product(id: any, form: NgForm): void {
     this.sold_products[this.selected_caisse] = this.sold_products[this.selected_caisse].filter((element: any) => element.id !== id);
     form.reset();
+    this.shared.set_vente(this.selected_caisse, this.sold_products[this.selected_caisse]);
   }
 
   change_quantite(id: number, event: any) {
-    this.sold_products[this.selected_caisse].find((product: any) => (product.id = id)).quantite = event.target.value;
+    this.sold_products[this.selected_caisse].find((product: any) => product.id == id).quantite = event.target.value;
     this.shared.set_vente(this.selected_caisse, this.sold_products[this.selected_caisse]);
   }
 }
