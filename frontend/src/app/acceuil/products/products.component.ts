@@ -27,9 +27,13 @@ export class ProductsComponent implements OnInit {
 
   // functions
   add_to_sold_products(product: any) {
-    let is_product_in_sold = this.sold_products[this.selected_caisse].find((element: any) => element.id == product.id);
+    let is_product_in_sold = this.sold_products[this.selected_caisse].find(
+      (element: any) => element.id == product.id
+    );
     if (is_product_in_sold) {
-      this.sold_products[this.selected_caisse].find((sold_element: any) => sold_element.id == product.id).quantite++;
+      this.sold_products[this.selected_caisse].find(
+        (sold_element: any) => sold_element.id == product.id
+      ).quantite++;
     } else {
       this.sold_products[this.selected_caisse].push({ ...product });
       this.show_suggestions = false;
@@ -39,6 +43,7 @@ export class ProductsComponent implements OnInit {
   }
 
   suggestions_show(form: NgForm): void {
+    console.log(this.all_products);
     if (form.value.input_search.length > 0) {
       this.all_products.forEach((element: any) => {
         if (element.code_bar == form.value.input_search) {
@@ -49,7 +54,12 @@ export class ProductsComponent implements OnInit {
         }
       });
       this.suggestions_products = this.all_products.filter((element: any) => {
-        if (element.nom.startsWith(form.value.input_search) || element.nom.toLowerCase().startsWith(form.value.input_search) || element.nom.toUpperCase().startsWith(form.value.input_search)) {
+        if (
+          element.nom.startsWith(form.value.input_search) ||
+          element.nom.toLowerCase().startsWith(form.value.input_search) ||
+          element.nom.toUpperCase().startsWith(form.value.input_search) ||
+          (element.reference && element.reference.startsWith(form.value.input_search))
+        ) {
           return true;
         } else {
           return false;
@@ -69,13 +79,16 @@ export class ProductsComponent implements OnInit {
   }
 
   delete_product(id: any, form: NgForm): void {
-    this.sold_products[this.selected_caisse] = this.sold_products[this.selected_caisse].filter((element: any) => element.id !== id);
+    this.sold_products[this.selected_caisse] = this.sold_products[this.selected_caisse].filter(
+      (element: any) => element.id !== id
+    );
     form.reset();
     this.shared.set_vente(this.selected_caisse, this.sold_products[this.selected_caisse]);
   }
 
   change_quantite(id: number, event: any) {
-    this.sold_products[this.selected_caisse].find((product: any) => product.id == id).quantite = event.target.value;
+    this.sold_products[this.selected_caisse].find((product: any) => product.id == id).quantite =
+      event.target.value;
     this.shared.set_vente(this.selected_caisse, this.sold_products[this.selected_caisse]);
   }
 }

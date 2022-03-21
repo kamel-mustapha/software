@@ -1,6 +1,8 @@
 altgraph==0.17.2
 cryptocode==0.1
 Django==2.2.24
+django-cors-headers==3.11.0
+djangorestframework==3.13.1
 future==0.18.2
 pefile==2021.9.3
 Pillow==9.0.1

@@ -2,7 +2,7 @@
   <div class="w-3/4 backdrop-blur-md rounded-lg shadow-lg">
     <app-price [total_price]="total_price" [selected_caisse]="selected_caisse"></app-price>
   </div>
-  <div class="w-1/4 backdrop-blur-md rounded-lg">
+  <div class="w-1/4">
     <app-date></app-date>
   </div>
 </div>
@@ -13,12 +13,15 @@
   </div>
   <div class="w-1/4 flex flex-col gap-4 overflow-hidden">
     <div class="h-1/2 rounded-lg">
-      <app-caisses [selected_caisse]="selected_caisse" [total_caisses]="total_caisses"></app-caisses>
+      <app-caisses
+        [selected_caisse]="selected_caisse"
+        [total_caisses]="total_caisses"
+      ></app-caisses>
     </div>
-    <div class="h-full bg-white rounded-lg dark:bg-gray-900">
+    <div class="h-full rounded-lg">
       <app-clients></app-clients>
     </div>
-    <div class="h-1/2 bg-white rounded-lg dark:bg-gray-900">
+    <div class="h-1/2 rounded-lg">
       <app-confirm></app-confirm>
     </div>
   </div>

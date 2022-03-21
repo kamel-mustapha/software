@@ -15,9 +15,9 @@ class Produit(models.Model):
     prix_vente = models.FloatField()
     prix_achat = models.FloatField(blank=True, null=True)
     date_peremption = models.DateField(blank=True, null=True)
-    code_barre = models.CharField(max_length=250, blank=True, null=True)
+    code_barre = models.CharField(unique=True, max_length=250, blank=True, null=True)
     stock = models.FloatField(blank=True, null=True)
-    reference = models.CharField(max_length=250, blank=True, null=True)
+    reference = models.CharField(unique=True ,max_length=250, blank=True, null=True)
     fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE, blank=True, null=True)
 
     @property

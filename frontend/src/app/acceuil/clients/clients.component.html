@@ -1,24 +1,33 @@
-<div class="h-14 flex dark:text-gray-200 border-b border-gray-100 dark:border-gray-800">
-  <div class="w-3/4">
-    <input
-      [(ngModel)]="client_search"
-      name="serch_client"
-      (input)="show_client()"
-      type="text"
-      class="block w-full h-full bg-transparent px-8 focus:outline-none text-responsive-sm dark:bg-dark_third"
-      placeholder="Chercher un client..."
-    />
-  </div>
-  <button type="submit" class="block w-1/4 text-center bg-primary text-responsive-sm font-bold text-white hover:opacity-75 transition duration-500 dark:bg-dark_secondary">Confirmer</button>
-</div>
-<div class="px-6 h-full overflow-auto text-gray-600 dark:text-gray-200 relative">
+<form
+  autocomplete="off"
+  class="h-14 flex dark:text-gray-200 border-b border-gray-100 dark:border-gray-800"
+>
+  <input
+    [(ngModel)]="client_search"
+    name="serch_client"
+    (input)="show_client()"
+    type="text"
+    class="block w-full h-full shadow-md bg-transparent px-8 focus:outline-none text-responsive-sm dark:bg-dark_third"
+    placeholder="Chercher un client..."
+  />
+</form>
+<div class="px-6 h-full text-gray-600 dark:text-gray-200 relative">
   <div class="py-1 h-full">
-    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Nom</span> :</div>
-    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Produits achetés</span> :</div>
-    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Total depensé</span> :</div>
-    <div class="my-2 text-responsive-sm overflow-x-auto"><span class="font-bold">Remise</span> :</div>
+    <div class="my-3 text-responsive-sm overflow-x-auto"><span class="font-bold">Nom</span> :</div>
+    <div class="my-5 text-responsive-sm overflow-x-auto">
+      <span class="font-bold">Produits achetés</span> :
+    </div>
+    <div class="my-5 text-responsive-sm overflow-x-auto">
+      <span class="font-bold">Total depensé</span> :
+    </div>
+    <div class="my-5 text-responsive-sm overflow-x-auto">
+      <span class="font-bold">Remise</span> :
+    </div>
   </div>
-  <div *ngIf="is_client" class="absolute bg-white top-0 left-0 w-full h-fit shadow-lg dark:bg-dark_secondary">
+  <div
+    *ngIf="is_client"
+    class="absolute bg-white top-0 left-0 w-full h-fit shadow-lg dark:bg-dark_secondary"
+  >
     <div
       [ngClass]="{ 'bg-gray-300 dark:bg-gray-700': selected_client[client.id] }"
       (click)="select_client(client.id)"

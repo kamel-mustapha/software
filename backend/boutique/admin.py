@@ -5,7 +5,7 @@ from .models import *
 class ProduitAdmin(admin.ModelAdmin):
     list_display = ('id', 'nom', 'categorie', 'prix_vente', 'prix_achat', 'date_peremption', 'stock', 'reference')
     list_display_links = ('id', 'nom')
-    list_editable = ('stock', 'date_peremption')
+    list_editable = ('stock', 'date_peremption', 'reference')
     list_filter = ('categorie',)
 
 admin.site.register(Categorie)

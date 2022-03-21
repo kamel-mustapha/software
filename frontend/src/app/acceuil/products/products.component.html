@@ -1,5 +1,7 @@
 <div class="h-full relative dark:text-gray-200">
-  <div class="py-3 product_grid text-responsive-sm shadow-md bg-primary text-white font-semibold dark:bg-dark_primary">
+  <div
+    class="py-3 product_grid text-responsive-sm shadow-md bg-secondary text-white font-semibold dark:bg-dark_primary"
+  >
     <div></div>
     <div>Article</div>
     <div>Prix</div>
@@ -7,7 +9,11 @@
     <div></div>
   </div>
 
-  <form autocomplete="off" #f="ngForm" class="h-16 flex shadow-md relative dark:bg-dark_third dark:shadow-xl">
+  <form
+    autocomplete="off"
+    #f="ngForm"
+    class="h-16 flex shadow-md relative dark:bg-dark_third dark:shadow-xl"
+  >
     <input
       autocomplete="off"
       name="input_search"
@@ -20,13 +26,20 @@
   </form>
 
   <div class="h-3/4 overflow-auto relative">
-    <div class="product_grid py-2 px-6 text-lg text-responsive-sm dark:border-gray-700" *ngFor="let product of sold_products[selected_caisse]; let i = index" [ngClass] = "{'bg-gray-100': i % 2 != 0}">
+    <div
+      class="product_grid py-2 px-6 text-lg text-responsive-sm dark:border-gray-700"
+      *ngFor="let product of sold_products[selected_caisse]; let i = index"
+      [ngClass]="{ 'bg-gray-100': i % 2 != 0 }"
+    >
       <div class="pt-3">{{ i + 1 }}.</div>
       <div class="font-bold overflow-x-hidden pt-3">
         {{ product.nom | titlecase }}
       </div>
       <div class="pt-3">
-        <span class="bg-secondary text-white rounded-full py-1 px-3 font-bold overflow-x-hidden dark:bg-dark_third">{{ product.prix_vente | number: "1.2-2" }}</span>
+        <span
+          class="bg-secondary text-white rounded-full py-1 px-3 font-bold overflow-x-hidden dark:bg-dark_third"
+          >{{ product.prix_vente | number: "1.2-2" }}</span
+        >
       </div>
       <div>
         <input
@@ -45,7 +58,10 @@
       </div>
     </div>
 
-    <div *ngIf="show_suggestions" class="bg-white shadow-lg absolute top-0 w-full h-fit z-40 dark:bg-dark_secondary">
+    <div
+      *ngIf="show_suggestions"
+      class="bg-gray-100 shadow-lg absolute top-0 w-full h-fit z-40 dark:bg-dark_secondary"
+    >
       <div
         (click)="submit_search(product.id, f)"
         class="product_grid py-4 px-8 text-lg border-t border-dashed border-gray-200 cursor-pointer hover:bg-gray-200 dark:border-gray-700 text-responsive-sm hover:dark:bg-gray-700"
@@ -56,11 +72,17 @@
           {{ product.nom | titlecase }}
         </div>
         <div>
-          <span class="bg-fifth rounded-full py-1 px-2 font-bold overflow-x-hidden dark:bg-dark_third">{{ product.prix_vente }}</span>
+          <span
+            class="bg-fifth rounded-full py-1 px-2 font-bold overflow-x-hidden dark:bg-dark_third"
+            >{{ product.prix_vente }}</span
+          >
           DA
         </div>
         <div>
-          <span class="bg-fourth rounded-full py-1 px-2 font-bold overflow-x-hidden dark:bg-cyan-900">ref. {{ product.reference }}</span>
+          <span
+            class="bg-fourth rounded-full py-1 px-2 font-bold overflow-x-hidden dark:bg-cyan-900"
+            >ref. {{ product.reference }}</span
+          >
         </div>
         <div class="text-center"></div>
       </div>
