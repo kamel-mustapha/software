@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { SharedService } from './shared.service';
 import { HttpService } from './http.service';
 
@@ -41,4 +41,24 @@ export class AcceuilComponent implements OnInit {
   total_price: any = {};
   selected_caisse = 'caisse_1';
   all_products: any[] = [];
+
+  @HostListener('window:keydown.F2')
+  confirm_vente() {
+    alert('Confirmation vente');
+  }
+
+  @HostListener('window:keydown.F4')
+  print_ticket() {
+    console.log('ticket');
+  }
+
+  @HostListener('window:keydown.F8')
+  focus_versement() {
+    document.getElementById('input_versement')?.focus();
+  }
+
+  @HostListener('window:keydown.F9')
+  focus_remise() {
+    document.getElementById('input_remise')?.focus();
+  }
 }

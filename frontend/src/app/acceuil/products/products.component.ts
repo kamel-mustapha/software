@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SharedService } from '../shared.service';
 
@@ -42,11 +42,13 @@ export class ProductsComponent implements OnInit {
     this.shared.set_vente(this.selected_caisse, this.sold_products[this.selected_caisse]);
   }
 
-  suggestions_show(form: NgForm): void {
-    console.log(this.all_products);
+  suggestions_show(form: NgForm, data = {}): void {
     if (form.value.input_search.length > 0) {
       this.all_products.forEach((element: any) => {
-        if (element.code_bar == form.value.input_search) {
+        if (
+          element.code_barre == form.value.input_search ||
+          element.code_barre_lower == form.value.input_search
+        ) {
           form.reset();
           this.show_suggestions = false;
           this.add_to_sold_products(element);

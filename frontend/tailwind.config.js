@@ -26,7 +26,7 @@ module.exports = {
         cover: "100%",
       },
       colors: {
-        primary: "#22D3EE",
+        primary: "#005454",
         secondary: "#008799",
         third: "#003c44",
         dark_primary: "#000022",
@@ -34,7 +34,7 @@ module.exports = {
         dark_third: "rgba(0, 33, 100 ,0.5)",
       },
       backgroundColor: {
-        primary: "#22D3EE",
+        primary: "#005454",
         secondary: "#008799",
         third: "#003c44",
         dark_primary: "#000022",
@@ -42,7 +42,7 @@ module.exports = {
         dark_third: "rgba(0, 33, 100 ,0.5)",
       },
       borderColor: {
-        primary: "#22D3EE",
+        primary: "#005454",
         secondary: "#008799",
         third: "#003c44",
         dark_primary: "#000022",

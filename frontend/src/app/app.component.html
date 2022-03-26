@@ -8,12 +8,25 @@
         (mouseout)="hide_aria(element.name)"
         class="relative block cursor-pointer my-6 py-2 hover:bg-gray-200 transition duration-500 dark:hover:bg-gray-800"
       >
-        <i class="fa-solid fa-{{ element.icon }} fa-xl text-primary block mx-auto cursor-pointer active:translate-y-1 transition duration-500 dark:text-gray-300"></i>
-        <span *ngIf="aria[element.name]" class="absolute top-0 left-16 bg-white rounded-lg px-2 py-1 font-bold shadow-xl z-50 dark:bg-black dark:text-white">{{ element.name }}</span>
+        <i
+          class="fa-solid fa-{{
+            element.icon
+          }} fa-xl text-secondary block mx-auto cursor-pointer active:translate-y-1 transition duration-500 dark:text-gray-300"
+        ></i>
+        <span
+          *ngIf="aria[element.name]"
+          class="absolute top-0 left-16 bg-white rounded-lg px-2 py-1 font-bold shadow-xl z-50 dark:bg-black dark:text-white"
+          >{{ element.name }}</span
+        >
       </a>
 
-      <span (click)="enable_dark_mode()" class="absolute bottom-0 left-0 right-0 block cursor-pointer my-6 py-2 hover:bg-gray-200 transition duration-500 dark:hover:bg-gray-800">
-        <i class="fa-solid fa-moon fa-xl text-primary block mx-auto cursor-pointer active:translate-y-1 transition duration-500 dark:text-gray-300"></i>
+      <span
+        (click)="enable_dark_mode()"
+        class="absolute bottom-0 left-0 right-0 block cursor-pointer my-6 py-2 hover:bg-gray-200 transition duration-500 dark:hover:bg-gray-800"
+      >
+        <i
+          class="fa-solid fa-moon fa-xl text-primary block mx-auto cursor-pointer active:translate-y-1 transition duration-500 dark:text-gray-300"
+        ></i>
       </span>
     </div>
     <div class="w-full h-full overflow-y-auto">
