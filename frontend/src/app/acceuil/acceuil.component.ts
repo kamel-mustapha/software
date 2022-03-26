@@ -61,4 +61,9 @@ export class AcceuilComponent implements OnInit {
   focus_remise() {
     document.getElementById('input_remise')?.focus();
   }
+
+  @HostListener('window:keydown.shift')
+  focus_product() {
+    document.getElementById('product_input_search')?.focus();
+  }
 }

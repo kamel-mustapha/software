@@ -16,7 +16,7 @@ module.exports = {
         fit: "fit-content",
       },
       backgroundImage: {
-        "main-light": "url('assets/bg-main.svg')",
+        "main-light": "url('assets/abstract-envelope.svg')",
         "main-dark": "url('assets/subtle-prism-dark.svg')",
       },
       backgroundRepeat: {

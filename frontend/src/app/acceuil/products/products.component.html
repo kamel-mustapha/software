@@ -20,8 +20,9 @@
       ngModel
       (input)="suggestions_show(f)"
       type="text"
+      id="product_input_search"
       class="block w-full h-full bg-transparent px-8 text-responsive-sm focus:outline-none"
-      placeholder="Chercher un produit..."
+      placeholder="Chercher un produit (↑)"
     />
   </form>
 
@@ -60,11 +61,11 @@
 
     <div
       *ngIf="show_suggestions"
-      class="bg-gray-100 shadow-lg absolute top-0 w-full h-fit z-40 dark:bg-dark_secondary"
+      class="shadow-lg absolute top-0 w-full h-fit max-h-60 overflow-auto z-40 dark:bg-dark_secondary"
     >
       <div
         (click)="submit_search(product.id, f)"
-        class="product_grid py-4 px-8 text-lg border-t border-dashed border-gray-200 cursor-pointer hover:bg-gray-200 dark:border-gray-700 text-responsive-sm hover:dark:bg-gray-700"
+        class="product_grid py-4 px-8 text-lg border-t border-dashed border-gray-300 cursor-pointer hover:bg-gray-200 dark:border-gray-700 text-responsive-sm hover:dark:bg-gray-700"
         *ngFor="let product of suggestions_products; let i = index"
       >
         <div>{{ i + 1 }}.</div>

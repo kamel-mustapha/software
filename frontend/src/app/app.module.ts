@@ -18,8 +18,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './acceuil/http.service';
 
 @NgModule({
-  declarations: [AppComponent, AcceuilComponent, DateComponent, PriceComponent, ProductsComponent, ClientsComponent, ConfirmComponent, ReglagesComponent, CaissesComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    AcceuilComponent,
+    DateComponent,
+    PriceComponent,
+    ProductsComponent,
+    ClientsComponent,
+    ConfirmComponent,
+    ReglagesComponent,
+    CaissesComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+  ],
   providers: [SharedService, HttpService],
   bootstrap: [AppComponent],
 })

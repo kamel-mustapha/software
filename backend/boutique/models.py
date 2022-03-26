@@ -1,5 +1,7 @@
 from django.db import models
 from boutique.common import replace_phrase
+from django.contrib.auth.models import AbstractUser
+
 
 class Categorie(models.Model):
     nom = models.CharField(max_length=250)
@@ -31,3 +33,13 @@ class Produit(models.Model):
         else:
             self.code_barre_lower = None
         super().save(*args, **kwargs)
+
+
+
+class Utilisateur(AbstractUser):
+    langues = (
+        ('fr', 'Français'),
+        ('ar', 'Arabic')
+    )
+    dark_mode = models.BooleanField(default=False)
+    langue = models.CharField(max_length=10, default='fr', choices=langues)
