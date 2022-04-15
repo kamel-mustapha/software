@@ -15,8 +15,11 @@ module.exports = {
       height: {
         fit: "fit-content",
       },
+      minHeight: {
+        "1/2": "50%",
+      },
       backgroundImage: {
-        "main-light": "url('assets/abstract-envelope.svg')",
+        "main-light": "url('assets/scattered-forcefields.svg')",
         "main-dark": "url('assets/subtle-prism-dark.svg')",
       },
       backgroundRepeat: {

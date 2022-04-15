@@ -16,6 +16,8 @@ import { CaissesComponent } from './acceuil/caisses/caisses.component';
 import { SharedService } from './acceuil/shared.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './acceuil/http.service';
+import { TicketComponent } from './reglages/ticket/ticket.component';
+import { IndexComponent } from './reglages/index/index.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { HttpService } from './acceuil/http.service';
     ConfirmComponent,
     ReglagesComponent,
     CaissesComponent,
+    TicketComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
